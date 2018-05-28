@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+App page | {{ block.super }}
+{% endblock %}
+
+{% block header0 %}
+<style>
+custom-item {
+	/*margin-bottom: 0px !important;
+	margin-bottom: 0px;*/
+}
+</style>
+{% endblock %}
+<body>
+	{% block qna_content %}
+	<h1 class="my-4">Questions <small class="muted-text">& Apps</small></h1>
+	<div class="col">
+		<ul class="nav nav-tabs">
+			<li class="nav-item">
+				<a class="nav-link disabled" href="{% url 'core:home' %}">Sort by</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link {% if sort_by == 'browse_popular' %} active {% endif %}" href="{% url 'core:home' %}">popular</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link {% if sort_by == 'browse_new' %} active {% endif %}" href="{% url 'core:browse_new' %}">New</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link {% if sort_by == 'browse_trend' %} active {% endif %}" href="{% url 'core:browse_trend' %}">Trending</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link disabled {% if sort_by == 'browse_favourite' %} active {% endif %}" href="#">
+					<abbr title="Future release, coming soon.">Favourite</abbr>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div>
+		{% for question in questions %}
+
+		<div class="col" style="margin: 20px; padding: 30px; background-color: rgba(0,0,0,.06); border-radius: 5px">
+			<div class="row">
+				<div class="float-left">
+					<h3>
+						{{question.question}}
+					</h3>
+				</div>
+				<div class="float-right">
+					<a class="btn btn-outline-info btn-sm" href="{% url 'core:question_detail' question.id %}">View detail</a>
+					<a class="btn btn-outline-primary btn-sm" href="{% url 'core:new_answer' request.user.username question.id %}">+</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="card-columns">
+					{% for answer in question.app_answer.all %}
+					<div class="card">
+						<div class="card-body text-center">
+							<h5 class="card-title custom-item" style="margin-bottom: 0px;">
+								<a href="{{answer.app_url}}" target="_blank">{{answer.app_name}}</a>
+							</h5>
+						</div>
+						<div class="card-footer">
+							<p class="card-text"><small class="text-muted">Last updated {{answer.updated|timesince}} ago</small></p>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+			<p class="float-right"><small class="text-muted">Last updated {{question.updated|timesince}} ago</small></p>
+		</div>
+		{% endfor %}
+	</div>
+	{% endblock %}	
+</body>
+
+

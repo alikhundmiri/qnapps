@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+{% load static %}
+
+
+{% block title %}
+Page Text | {{ block.super }}
+{% endblock %}
+
+{% block header0 %}
+
+{% endblock %}
+
+{% block qna_content %}
+
+<div style="margin-top: 100px"></div>
+<div class="row">
+	<div class="col">
+		<h3>{{question.question}}</h3>
+		<br>
+		<div class="card-columns">
+			{% for answer in question.app_answer.all %}
+			<div class="card">
+				<div class="card-body text-center">
+					<h5 class="card-title custom-item">
+						<a href="{{answer.app_url}}" target="_blank">{{answer.app_name}}</a>
+					</h5>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		
+	</div>
+</div>
+<div style="margin-top: 100px"></div>
+{% endblock %}
