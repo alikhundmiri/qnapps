@@ -28,50 +28,40 @@
 </head>
 
 <body>
-
 	<!-- Navigation -->
 	{% include 'navbar.html' %}
-
-	
 	<!-- Page Content -->
 	<div class="container">
-
 		<div class="row">
-
 			<!-- Blog Entries Column -->
-			<div class="col-md-8">
+			<div class="col-lg-8 col-md-12 col-sm-12">
 				{% block qna_content %}
 				{% endblock %}
 			</div>
 			<!-- Sidebar Widgets Column -->
-			<div class="col-md-4">
-				<div class="position-fixed">
+			<div class="col-lg-4 col-md-12 col-sm-12">
+				<div class="position-fixed" style="max-width: 30%;">
 					<!-- Side Widget -->
 					<div class="card my-4">
 						<h5 class="card-header text-muted">Sponsored</h5>
 						<div class="card-body">
-							You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+							Show your question here, and your app link below. This is advert!
 						</div>
 						<div class="card-footer">
-							Giventhomas.com
+							<a href="http://www.examplesite.com" target="_blank">examplesite.com</a>
 						</div>
 					</div>
 				</div>
-
 			</div>
-
 		</div>
 		<!-- /.row -->
-
 	</div>
+	{% block content_2 %}
+	{% endblock %}
 	<!-- /.container -->
-
 	{% include 'footer.html' %}
-
 	<!-- Bootstrap core JavaScript -->
 	<script src="{% static 'base/vendor/jquery/jquery.min.js' %}"></script>
 	<script src="{% static 'base/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-
 </body>
-
 </html>
