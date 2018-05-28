@@ -16,7 +16,7 @@ def lander(request):
 def index(request):
 	# q_s = questions.objects.order_by('-app_answer__timestamp')
 
-	q_s = questions.objects.annotate(count=Count('app_answer')).order_by('-count')
+	q_s = questions.objects.annotate(count=Count('app_answer')).order_by('-count').distinct()
 
 	context = {
 		'sort_by' : "browse_popular",
@@ -25,7 +25,7 @@ def index(request):
 	return render(request, 'index.html', context)
 
 def browse_new(request):
-	q_s = questions.objects.order_by('-timestamp', '-app_answer__timestamp')
+	q_s = questions.objects.order_by('-timestamp').distinct()
 	context = {
 		'sort_by' : "browse_new",
 		'questions' : q_s,
@@ -34,7 +34,7 @@ def browse_new(request):
 
 
 def browse_trend(request):
-	q_s = questions.objects.order_by('app_answer')
+	q_s = questions.objects.order_by('app_answer').distinct()
 	context = {
 		'sort_by' : "browse_trend",
 		'questions' : q_s,
@@ -43,7 +43,7 @@ def browse_trend(request):
 
 
 def browse_favourite(request):
-	q_s = questions.objects.order_by('timestamp')
+	q_s = questions.objects.order_by('timestamp').distinct()
 	context = {
 		'sort_by' : "browse_favourite",
 		'questions' : q_s,
