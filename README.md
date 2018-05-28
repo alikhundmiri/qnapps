@@ -4,7 +4,7 @@
 
 ##### Popular
 
-sort by questions with most numbers of answers
+Sort by questions with most numbers of answers
 
 ##### New
 

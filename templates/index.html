@@ -23,17 +23,17 @@ custom-item {
 				<a class="nav-link disabled" href="{% url 'core:home' %}">Sort by</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link {% if sort_by == 'browse_popular' %} active {% endif %}" href="{% url 'core:home' %}">popular</a>
+				<a class="nav-link {% if sort_by == 'browse_popular' %} active {% endif %}" href="{% url 'core:home' %}"><abbr title="Sort by Questions with most numbers of Answers. Default sort.">Popular</abbr></a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link {% if sort_by == 'browse_new' %} active {% endif %}" href="{% url 'core:browse_new' %}">New</a>
+				<a class="nav-link {% if sort_by == 'browse_new' %} active {% endif %}" href="{% url 'core:browse_new' %}"><abbr title="Sort by new Questions.">New</abbr></a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link {% if sort_by == 'browse_trend' %} active {% endif %}" href="{% url 'core:browse_trend' %}">Trending</a>
+				<a class="nav-link {% if sort_by == 'browse_trend' %} active {% endif %}" href="{% url 'core:browse_trend' %}"><abbr title="Sort by Questions with latest answered. Needs Fixing!">Trending</abbr></a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link disabled {% if sort_by == 'browse_favourite' %} active {% endif %}" href="#">
-					<abbr title="Future release, coming soon.">Favourite</abbr>
+					<abbr title="Favourite Questions of visitors. (Future release, coming soon)">Favourite</abbr>
 				</a>
 			</li>
 		</ul>
