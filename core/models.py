@@ -8,9 +8,11 @@ from django.db import models
 class questions(models.Model):
 	user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
 	question = models.CharField(max_length=180, unique=True)
+	qc_pass = models.BooleanField(default=False)
 
 	timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
 	updated = models.DateTimeField(auto_now=True, auto_now_add=False)
+
 	
 	class Meta:
 		ordering = ["-timestamp", "-updated"]
@@ -25,10 +27,11 @@ class answers(models.Model):
 	question_ref = models.ForeignKey('questions', related_name='app_answer', on_delete=models.CASCADE)
 	app_name = models.CharField(max_length=50)
 	app_url = models.CharField(max_length=200)
-
+	qc_pass = models.BooleanField(default=False)
+	
 	timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
 	updated = models.DateTimeField(auto_now=True, auto_now_add=False)
-	
+
 	class Meta:
 		ordering = ["-timestamp", "-updated"]
 		verbose_name = 'Answer'

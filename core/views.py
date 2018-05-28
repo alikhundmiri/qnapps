@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404, HttpResponseRedirect
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import User
 from django.urls import reverse
-from django.db.models import Count
+from django.db.models import Count, Q
 
 from .models import questions, answers
 
@@ -13,10 +14,19 @@ def lander(request):
 	}
 	return render(request, 'landing.html', context)
 
+# POPULAR
 def index(request):
 	# q_s = questions.objects.order_by('-app_answer__timestamp')
 
-	q_s = questions.objects.annotate(count=Count('app_answer')).order_by('-count').distinct()
+	"""
+	This line needs to filter out these things in sequence.
+	1. questions which are qc_pass==True
+	2. answers to those each questions which are qc_pass==True
+	3. order these questions by the onces with most answers to questions with least answers
+
+	steps  1 and 3 are ok. Step 2 is where I am stuck at.
+	"""
+	q_s = questions.objects.filter(qc_pass=True).annotate(relevent_answer=Count('app_answer', filter=Q(app_answer__qc_pass=True))).order_by('-relevent_answer').distinct()
 
 	context = {
 		'sort_by' : "browse_popular",
@@ -25,7 +35,7 @@ def index(request):
 	return render(request, 'index.html', context)
 
 def browse_new(request):
-	q_s = questions.objects.order_by('-timestamp').distinct()
+	q_s = questions.objects.filter(qc_pass=True).order_by('-timestamp')
 	context = {
 		'sort_by' : "browse_new",
 		'questions' : q_s,
@@ -34,7 +44,11 @@ def browse_new(request):
 
 
 def browse_trend(request):
-	q_s = questions.objects.order_by('app_answer').distinct()
+	"""
+	This needs to filter new quetions and apps with qc_pass=True.
+	it should load all 
+	"""
+	q_s = questions.objects.filter(qc_pass=True).order_by('app_answer').distinct()
 	context = {
 		'sort_by' : "browse_trend",
 		'questions' : q_s,
@@ -43,7 +57,7 @@ def browse_trend(request):
 
 
 def browse_favourite(request):
-	q_s = questions.objects.order_by('timestamp').distinct()
+	q_s = questions.objects.filter(qc_pass=True).order_by('timestamp')
 	context = {
 		'sort_by' : "browse_favourite",
 		'questions' : q_s,
@@ -59,7 +73,7 @@ def question_detail(request, id=None):
 
 	return render(request, 'question_detail.html', context)
 
-
+@login_required
 def new_question(request, username=None):
 	if not request.user.is_authenticated:
 		raise Http404
@@ -89,6 +103,7 @@ def new_question(request, username=None):
 	}
 	return render(request, 'question_form.html', context)
 
+@login_required
 def new_answer(request, username=None, id=None):
 	if not request.user.is_authenticated:
 		raise Http404
@@ -114,3 +129,21 @@ def new_answer(request, username=None, id=None):
 		"form_text": "New Answer",
 	}
 	return render(request, 'answer_form.html', context)
+
+# @user_passes_test(lambda u: u.is_superuser)
+# def superuser_index(request, username=None):
+# 	if not request.user.is_authenticated:
+# 		raise Http404
+
+# 	context = {
+# 	}
+# 	return render(request, 'core/superuser_index.html', context)
+
+# @user_passes_test(lambda u: u.is_superuser)
+# def superuser_qc(request, username=None):
+# 	if not request.user.is_authenticated:
+# 		raise Http404
+
+# 	context = {
+# 	}
+# 	return render(request, 'core/superuser_index.html', context)

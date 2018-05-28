@@ -3,16 +3,18 @@ from .models import questions, answers
 # Register your models here.
 
 class AnswersAdmin(admin.ModelAdmin):
-	list_display = ['user', 'question_ref', 'app_name', "timestamp", 'updated']
-	list_filter = ['user', 'app_name', 'app_url', "timestamp", 'updated', 'question_ref']
-	search_field = ['user', 'app_name', 'app_url', "timestamp", 'updated', 'question_ref']
+	list_display = ['user', 'question_ref', 'app_name', "timestamp", 'updated', 'qc_pass']
+	list_filter = [ 'qc_pass', 'user', 'app_name', 'app_url', "timestamp", 'updated', 'question_ref']
+	search_field = ['user', 'app_name', 'app_url', "timestamp", 'updated', 'question_ref', 'qc_pass']
+	list_editable = ['qc_pass']
 	class Meta:
 		model = answers
 
 class QuestionsAdmin(admin.ModelAdmin):
-	list_display = ['user', 'question', 'timestamp', 'updated',]
-	list_filter = ['user', 'question', 'timestamp', 'updated',]
-	search_field = ['user', 'question', 'timestamp', 'updated',]
+	list_display = ['user', 'question', 'timestamp', 'updated', 'qc_pass']
+	list_filter = [ 'qc_pass', 'user', 'question', 'timestamp', 'updated']
+	search_field = ['user', 'question', 'timestamp', 'updated', 'qc_pass']
+	list_editable = ['qc_pass']
 	class Meta:
 		model = questions
 
