@@ -6,20 +6,56 @@
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="">
-	<meta name="author" content="">
+	<meta name="description" content="Question And Apps is a discovery site to find about potential problems to solve. Here you can find questions and their answers given in form of apps or product.">
+	<meta name="author" content="@newlifeshoes">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@newlifeshoes">
+	<meta name="twitter:creator" content="@newlifeshoes">
+	<meta property="og:url" content="{{ request.build_absolute_uri }}">
+	{% comment %}
+	<!-- summary_large_image -->
+<!-- 	<meta name="twitter:image" content="https://s3.amazonaws.com/side-projects/afiio/media/profiles/ali/card/ali_user_card_1.png">
+	<meta property="og:image" content="https://s3.amazonaws.com/side-projects/afiio/media/profiles/ali/card/ali_user_card_1.png">
+-->
+{% endcomment %}
+<meta name="twitter:title" content="Question And Apps - Each question has an app for answer">
+<meta property="og:title" content="Question And Apps - Each question has an app for answer">
+<meta name="twitter:description" content="Question And Apps is a discovery site to find about potential problems to solve. Here you can find questions and their answers given in form of apps or product.">
+<meta property="og:description" content="Question And Apps is a discovery site to find about potential problems to solve. Here you can find questions and their answers given in form of apps or product.">
 
-	<title>Question and Apps</title>
+<title>Question and Apps</title>
+<!-- Bootstrap core CSS -->
+<link href="{% static 'base/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="{% static 'base/css/scrolling-nav.css' %}" rel="stylesheet">
+<link href="{% static 'css/one-page-wonder.min.css' %}" rel="stylesheet">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N5PXTVV');
+</script>
+<!-- End Google Tag Manager -->
 
-	<!-- Bootstrap core CSS -->
-	<link href="{% static 'base/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119975922-1"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
 
-	<!-- Custom styles for this template -->
-	<link href="{% static 'base/css/scrolling-nav.css' %}" rel="stylesheet">
+	gtag('config', 'UA-119975922-1');
+</script>
 
 </head>
 
 <body id="page-top">
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N5PXTVV"
+		height="0" width="0" style="display:none;visibility:hidden"></iframe>
+	</noscript>
+	<!-- End Google Tag Manager (noscript) -->
 
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
@@ -49,12 +85,20 @@
 		</div>
 	</nav>
 
-	<header class="bg-primary text-white">
-		<div class="container text-center">
-			<h1>Questions & Apps</h1>
-			<p class="lead">Have a Question? There's an app* for it!</p>
+	<header class="masthead text-center text-white">
+		<div class="masthead-content">
+			<div class="container">
+				<h1 class="masthead-heading mb-0">QnApps</h1>
+				<h2 class="masthead-subheading mb-0">Have a Question? There's an app for it!</h2>
+				<!-- <a href="#" class="btn btn-primary btn-xl rounded-pill mt-5">Learn More</a> -->
+			</div>
 		</div>
+		<div class="bg-circle-1 bg-circle"></div>
+		<div class="bg-circle-2 bg-circle"></div>
+		<div class="bg-circle-3 bg-circle"></div>
+		<div class="bg-circle-4 bg-circle"></div>
 	</header>
+
 
 	<section id="about">
 		<div class="container">

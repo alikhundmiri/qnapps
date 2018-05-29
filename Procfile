@@ -1,0 +1,1 @@
+web: gunicorn qnapps.wsgi --log-file -
