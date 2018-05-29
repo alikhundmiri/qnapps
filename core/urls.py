@@ -23,6 +23,7 @@ urlpatterns = [
         path('', views.index, name='home'),
         path('new/', views.browse_new, name='browse_new'),
         path('trend/', views.browse_trend, name='browse_trend'),
+        path('popular/', views.browse_popular, name='browse_popular'),
         path('favourite/', views.browse_favourite, name='browse_favourite'),
         ])),
     path('lander/', views.lander , name='lander'),

@@ -2,18 +2,42 @@
 {% load static %}
 
 
-{% block title %}
-Page Text | {{ block.super }}
-{% endblock %}
+{% block title %}({{question.app_answer.count}}) {{question.question|truncatechars:50}} | {{ block.super }}{% endblock %}
 
-{% block header0 %}
+
+{% block meta_description %}{% endblock %}
+
+{% block meta_author %}@{{question.user.username}}{% endblock %}
+
+{% block other_meta %}
+
+	<meta name="twitter:card" content="summary_large_image">
+
+	<meta name="twitter:site" content="@newlifeshoes">
+
+	<meta name="twitter:creator" content="@{{user.username}}">
+
+	<meta property="og:url" content="{{ request.build_absolute_uri }}">
+{% comment %}
+<!-- 	<meta name="twitter:image" content="https://s3.amazonaws.com/side-projects/afiio/media/profiles/ali/card/ali_user_card_1.png">
+
+	<meta property="og:image" content="https://s3.amazonaws.com/side-projects/afiio/media/profiles/ali/card/ali_user_card_1.png">
+ -->
+ {% endcomment %}
+	<meta name="twitter:title" content="{{question.question|truncatechars:150}}">
+
+	<meta property="og:title" content="{{question.question|truncatechars:150}}">
+
+	<meta name="twitter:description" content="{% for answer in question.app_answer.all|slice:':10' %}{{answer.app_name}}, {% endfor %}">
+
+	<meta property="og:description" content="{% for answer in question.app_answer.all|slice:':10' %}{{answer.app_name}}, {% endfor %}">
 
 {% endblock %}
 
 {% block qna_content %}
 
 <div style="margin-top: 100px"></div>
-<div class="row">
+<!-- <div class="row">
 	<div class="col">
 		<h3>{{question.question}}</h3>
 		<br>
@@ -30,6 +54,49 @@ Page Text | {{ block.super }}
 		</div>
 		
 	</div>
+</div> -->
+{% if request.user == question.user %}
+<div class="col">
+	<div class="row float-right">
+		<p class="text-muted">Your Question is under review by Admin. If its been too long since your request, <a target="_blank" href="http://www.twitter.com/newlifeshoes">DM me on twitter!</a></p>	
+	</div>
+</div>
+{% endif %}
+<div class="col" style="margin: 20px; padding: 30px; background-color: rgba(0,0,0,.06); border-radius: 5px">
+	<div class="row">
+		<div class="col">
+			<div class="float-right">
+				{% if request.user.is_authenticated %}
+				<a class="btn btn-outline-primary btn-sm" href="{% url 'core:new_answer' request.user.username question.id %}">+</a>
+				{% endif %}
+			</div>
+			<div class="row">
+				<h3>
+					{{question.question}}
+				</h3>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="card-columns">
+			{% for answer in question.app_answer.all %}
+			<div class="card">
+				<div class="card-body text-center">
+					<h5 class="card-title custom-item" style="margin-bottom: 0px;">
+						<a href="{{answer.app_url}}" target="_blank">{{answer.app_name}}</a>
+					</h5>
+				</div>
+				<div class="card-footer">
+					<p class="card-text"><small class="text-muted">Last updated {{answer.updated|timesince}} ago</small></p>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+	<div class="float-right">
+		<p><small class="text-muted">Last updated {{question.updated|timesince}} ago</small></p>
+	</div>
 </div>
 <div style="margin-top: 100px"></div>
 {% endblock %}
+

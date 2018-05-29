@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.http import HttpResponse, Http404
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.db.models import Count, Q
@@ -16,6 +17,13 @@ def lander(request):
 
 # POPULAR
 def index(request):
+	if request.user.is_authenticated:
+		return HttpResponseRedirect(reverse('core:browse_popular'))
+		pass
+	else:
+		return HttpResponseRedirect(reverse('core:lander'))
+
+def browse_popular(request):
 	# q_s = questions.objects.order_by('-app_answer__timestamp')
 
 	"""
@@ -66,6 +74,10 @@ def browse_favourite(request):
 
 def question_detail(request, id=None):
 	question = get_object_or_404(questions, id=id)
+
+	if question.qc_pass == False:
+		if request.user != question.user:		
+			raise Http404
 
 	context = {
 		'question' : question

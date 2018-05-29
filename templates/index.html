@@ -28,14 +28,14 @@ custom-item {
 			<li class="nav-item">
 				<a class="nav-link {% if sort_by == 'browse_new' %} active {% endif %}" href="{% url 'core:browse_new' %}"><abbr title="Sort by new Questions.">New</abbr></a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link {% if sort_by == 'browse_trend' %} active {% endif %}" href="{% url 'core:browse_trend' %}"><abbr title="Sort by Questions with latest answered. Needs Fixing!">Trending</abbr></a>
+<!-- 			<li class="nav-item">
+				<a class="nav-link disabled {% if sort_by == 'browse_trend' %} active {% endif %}" href="#"><abbr title="Sort by Questions with latest answered. Needs Fixing, coming soon!.">Trending</abbr></a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link disabled {% if sort_by == 'browse_favourite' %} active {% endif %}" href="#">
 					<abbr title="Favourite Questions of visitors. (Future release, coming soon)">Favourite</abbr>
 				</a>
-			</li>
+			</li> -->
 		</ul>
 	</div>
 	<div>

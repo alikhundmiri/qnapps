@@ -11,7 +11,7 @@ class QuestionForm(forms.ModelForm):
 
 	def __init__(self, user, *args, **kwargs):
 		super(QuestionForm, self).__init__(*args, **kwargs)
-		self.fields["question"].help_text = "Your Question Here, in less then 180 characters"
+		self.fields["question"].help_text = "Enter your question here, in less than 180 characters"
 		self.fields['question'].widget.attrs.update({
 			'maxlength': "179"
 			})

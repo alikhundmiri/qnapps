@@ -24,21 +24,26 @@
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
 		<div class="container">
-			<a class="navbar-brand js-scroll-trigger" href="#page-top">Questions</a>
+			<a class="navbar-brand js-scroll-trigger" href="#page-top">QnApps</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
-						<a class="nav-link js-scroll-trigger" href="#about">About</a>
+						<a class="nav-link js-scroll-trigger" href="#about">Idea</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link js-scroll-trigger" href="#services">Services</a>
+						<a class="nav-link js-scroll-trigger" href="#services">Use</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+						<a class="nav-link js-scroll-trigger" href="#funnel_in">Register</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link js-scroll-trigger" href="#contact">The Maker</a>
+					</li>
+
+					<a class="btn btn-danger navbar-btn" href="{% url 'core:browse_popular' %}">View Product</a>
 				</ul>
 			</div>
 		</div>
@@ -47,7 +52,7 @@
 	<header class="bg-primary text-white">
 		<div class="container text-center">
 			<h1>Questions & Apps</h1>
-			<p class="lead">Every question, has an app as an answer!</p>
+			<p class="lead">Have a Question? There's an app* for it!</p>
 		</div>
 	</header>
 
@@ -55,14 +60,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 mx-auto">
-					<h2>About this page</h2>
-					<p class="lead">This is a great place to talk about your webpage. This template is purposefully unstyled so you can use it as a boilerplate or starting point for you own landing page designs! This template features:</p>
-					<ul>
-						<li>Clickable nav links that smooth scroll to page sections</li>
-						<li>Responsive behavior when clicking nav links perfect for a one page website</li>
-						<li>Bootstrap's scrollspy feature which highlights which section of the page you're on in the navbar</li>
-						<li>Minimal custom CSS so you are free to explore your own unique design options</li>
-					</ul>
+					<h2>Idea</h2>
+					<p class="lead">Every thing ever invented was thought of because of a question. Here I am collecting questions which have lead for you to create ideas.</p>
 				</div>
 			</div>
 		</div>
@@ -72,19 +71,71 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 mx-auto">
-					<h2>Services we offer</h2>
-					<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut optio velit inventore, expedita quo laboriosam possimus ea consequatur vitae, doloribus consequuntur ex. Nemo assumenda laborum vel, labore ut velit dignissimos.</p>
+					<h2>How to use</h2>
+					<p class="lead">
+						There are multiple <i>Questions</i> whos answers are <i>solutions</i> in form of apps.
+						<br><br>
+						These questions are submitted by Indie hackers, product developers and also by people who are seeking solutions for their daily problems.
+						<br><br>
+						After submission, each question is verified by the developer to maintain authencity of this website. Making sure each question is unique and each app is correctly placed is taken very seriously.
+						<br><br>
+					</p>
 				</div>
 			</div>
 		</div>
 	</section>
 
+	<section id="services">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 mx-auto">
+					<h2>How is this website useful?</h2>
+					<p class="lead">
+						<b><u>For comsumers</u></b><br>
+						You will find multiple services and apps suitable for your need and question.<br><br>You may find solutions to your existing questions, or find alternative to your existing solution provider.
+						<br><br>You can even ask questions if you can't find their solutions.<br><br><br>
+						
+						<b><u>For Indie hackers and product developers</u></b><br>
+						You can search for problems to solve here.<br><br>If you find a question related to a service you provide, you can submit your app as an answer to that question.
+						<br><br>In addition to this, if you have already created a service, then you can submit a question whose answer is your solution and reach new audience.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="funnel_in" class="bg-light">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 mx-auto">
+					<h2>Register</h2>
+					<p class="lead">
+						You can browse the website for questions by clicking the red button in the navigation bar, or by <a href="{% url 'core:browse_popular' %}">clicking here</a>. <br>
+						However, in order to submit your product, you need to register.
+					</p>
+					<a href="{% url 'register' %}" class="btn btn-outline-primary btn-lg">Free Registration</a>
+					<br><br><p>
+						or, if you already have an account here
+					</p>
+					<a href="{% url 'login' %}" class="btn btn-outline-danger">Login</a>
+					
+				</div>
+			</div>
+		</div>
+	</section>
+
+
 	<section id="contact">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 mx-auto">
-					<h2>Contact us</h2>
-					<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
+					<h2>The Maker</h2>
+					<p class="lead">Hi, I Am Ali, and I made this site. Being an Indie hacker, I work on multiple small projects through out the year, and this is one of them. I am on my way to create profitable side projects by the end of 2018, with a goal of $500 monthly recurring revenue.<br></p>
+					<p class="lead">
+					I am mostly active on twitter, so if you have any passing remarks or hickups using my products, feel free to contact me on twitter. :-)</p>
+					<a href="https://twitter.com/newlifeshoes?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @newlifeshoes</a>
+					<a href="https://twitter.com/intent/tweet?screen_name=newlifeshoes&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-size="large" data-show-count="false">Tweet to @newlifeshoes</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+					<!-- <img src="https://pbs.twimg.com/profile_images/982524881764999168/XEs_-jBy_400x400.jpg"> -->
 				</div>
 			</div>
 		</div>

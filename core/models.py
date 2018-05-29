@@ -27,7 +27,7 @@ class answers(models.Model):
 	question_ref = models.ForeignKey('questions', related_name='app_answer', on_delete=models.CASCADE)
 	app_name = models.CharField(max_length=50)
 	app_url = models.CharField(max_length=200)
-	qc_pass = models.BooleanField(default=False)
+	qc_pass = models.BooleanField(default=True) #For now, let it be true. I cant find a way to filter out answers.
 	
 	timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
 	updated = models.DateTimeField(auto_now=True, auto_now_add=False)
