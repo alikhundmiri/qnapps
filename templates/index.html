@@ -20,10 +20,10 @@ custom-item {
 	<div class="col">
 		<ul class="nav nav-tabs">
 			<li class="nav-item">
-				<a class="nav-link disabled" href="{% url 'core:home' %}">Sort by</a>
+				<a class="nav-link disabled" href="{% url 'core:browse_popular' %}">Sort by</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link {% if sort_by == 'browse_popular' %} active {% endif %}" href="{% url 'core:home' %}"><abbr title="Sort by Questions with most numbers of Answers. Default sort.">Popular</abbr></a>
+				<a class="nav-link {% if sort_by == 'browse_popular' %} active {% endif %}" href="{% url 'core:browse_popular' %}"><abbr title="Sort by Questions with most numbers of Answers. Default sort.">Popular</abbr></a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link {% if sort_by == 'browse_new' %} active {% endif %}" href="{% url 'core:browse_new' %}"><abbr title="Sort by new Questions.">New</abbr></a>
