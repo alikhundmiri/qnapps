@@ -25,7 +25,13 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '-a)fm)_xm@%_x7#3041(3@(io!a9fuvy2t)yd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+'https://qandapps.herokuapp.com/',
+"http://qandapps.herokuapp.com/",
+"qandapps.herokuapp.com",
+# 'http://127.0.0.1:8000/',
+'127.0.0.1',]
+
 
 
 # Application definition
