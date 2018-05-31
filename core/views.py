@@ -42,8 +42,8 @@ def browse_popular(request):
 	query = request.GET.get("q")
 	if query:
 		q_s = q_s.filter(
-			Q(question__icontains=query)
-			# Q(app_answer__app_name__icontains=query)|
+			Q(question__icontains=query)|
+			Q(app_answer__app_name__icontains=query)
 		).distinct()
 
 	paginator = Paginator(q_s, 10) # show 10 Blogs per page
