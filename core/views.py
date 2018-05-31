@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.http import HttpResponse, Http404
@@ -36,21 +37,66 @@ def browse_popular(request):
 	"""
 	q_s = questions.objects.filter(qc_pass=True).annotate(relevent_answer=Count('app_answer', filter=Q(app_answer__qc_pass=True))).order_by('-relevent_answer').distinct()
 
+
+
+	query = request.GET.get("q")
+	if query:
+		q_s = q_s.filter(
+			Q(question__icontains=query)
+			# Q(app_answer__app_name__icontains=query)|
+		).distinct()
+
+	paginator = Paginator(q_s, 10) # show 10 Blogs per page
+	page_request_var = "page"
+	page = request.GET.get(page_request_var)
+	try:
+		q_s_sort = paginator.page(page)
+	except PageNotAnInteger:
+		# If page is not an integer, deliver first page.
+		q_s_sort = paginator.page(1)
+	except EmptyPage:
+		# If page is out of range (e.g. 9999), deliver last page of results.
+		q_s_sort = paginator.page(paginator.num_pages)
+
+
+
 	context = {
 		'sort_by' : "browse_popular",
-		"questions" : q_s,
+		"page_request_var" : page_request_var,
+		"questions" : q_s_sort,
 	}
 	return render(request, 'index.html', context)
 
 def browse_new(request):
 	q_s = questions.objects.filter(qc_pass=True).order_by('-timestamp')
+
+	query = request.GET.get("q")
+	if query:
+		q_s = q_s.filter(
+			Q(question__icontains=query)|
+			Q(app_answer__app_name__icontains=query)
+		).distinct()
+
+	paginator = Paginator(q_s, 10) # show 10 Blogs per page
+	page_request_var = "page"
+	page = request.GET.get(page_request_var)
+	try:
+		q_s_sort = paginator.page(page)
+	except PageNotAnInteger:
+		# If page is not an integer, deliver first page.
+		q_s_sort = paginator.page(1)
+	except EmptyPage:
+		# If page is out of range (e.g. 9999), deliver last page of results.
+		q_s_sort = paginator.page(paginator.num_pages)
+
 	context = {
 		'sort_by' : "browse_new",
-		'questions' : q_s,
+		"page_request_var" : page_request_var,
+		"questions" : q_s_sort,
 	}
 	return render(request, 'index.html', context)
 
-
+# This has been disabled 
 def browse_trend(request):
 	"""
 	This needs to filter new quetions and apps with qc_pass=True.
@@ -62,7 +108,6 @@ def browse_trend(request):
 		'questions' : q_s,
 	}
 	return render(request, 'index.html', context)
-
 
 def browse_favourite(request):
 	q_s = questions.objects.filter(qc_pass=True).order_by('timestamp')
