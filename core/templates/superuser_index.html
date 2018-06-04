@@ -12,4 +12,39 @@ Welcome to Superuser, {{request.user.username}} | {{ block.super }}
 
 {% block qna_content %}
 
+<!-- <div style="margin-top: 100px"></div> -->
+
+<div class="col">
+	<div class="row">
+		<h1>Superuser</h1>
+	</div>
+</div>
+<div class="col">
+	<div class="row">
+		<div class="card-columns">
+			<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+				<div class="card-body text-center">
+					<h1 class="card-title display-1">{{questions}}</h1>
+					<p class="card-text">Total Questions</p>					
+					<div class="card-footer" style="background-color: #159BAF; border-top: 0px">
+						<h1 class="card-title display-4">
+							{{questions_pending}}
+						</h1> pending verification
+					</div>
+				</div>
+			</div>
+			<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+				<div class="card-body text-center">
+					<h1 class="card-title display-1">{{answers}}</h1>
+					<p class="card-text">Total Answers</p>
+					<div class="card-footer" style="background-color: #2D3238; border-top: 0px">
+						<h1 class="card-title display-4">
+							{{answers_pending}}
+						</h1> pending verification
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock %}

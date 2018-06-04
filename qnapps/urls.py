@@ -19,9 +19,16 @@ from django.contrib import admin
 from django.urls import path, include
 
 from accounts.views import (login_view, logout_view, register_view)
+from core.views import (superuser_index, superuser_qc)
 
 urlpatterns = [
 	path('admin/', admin.site.urls),
+    
+    path('superuser/<str:username>/', include([
+        path('', superuser_index, name='superuser_index'),
+        # path('question/<int:id>/answer/', views.new_answer, name='new_answer'),
+        ])),
+
     path('login/', login_view, name='login'),
     path('logout/', logout_view, name='logout'),
     path('register/', register_view, name='register'),

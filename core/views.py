@@ -187,20 +187,31 @@ def new_answer(request, username=None, id=None):
 	}
 	return render(request, 'answer_form.html', context)
 
-# @user_passes_test(lambda u: u.is_superuser)
-# def superuser_index(request, username=None):
-# 	if not request.user.is_authenticated:
-# 		raise Http404
+@user_passes_test(lambda u: u.is_superuser)
+def superuser_index(request, username=None):
+	q_s = questions.objects.all().count()
+	q_s_pending = questions.objects.filter(qc_pass=False).count()
 
-# 	context = {
-# 	}
-# 	return render(request, 'core/superuser_index.html', context)
+	a_s = answers.objects.all().count()
+	a_s_pending = answers.objects.filter(qc_pass=False).count()
 
-# @user_passes_test(lambda u: u.is_superuser)
-# def superuser_qc(request, username=None):
-# 	if not request.user.is_authenticated:
-# 		raise Http404
+	if not request.user.is_authenticated:
+		raise Http404
 
-# 	context = {
-# 	}
-# 	return render(request, 'core/superuser_index.html', context)
+	context = {
+		'questions' : q_s,
+		'questions_pending' : q_s_pending,
+
+		'answers' : a_s,
+		'answers_pending' : a_s_pending,
+	}
+	return render(request, 'superuser_index.html', context)
+
+@user_passes_test(lambda u: u.is_superuser)
+def superuser_qc(request, username=None):
+	if not request.user.is_authenticated:
+		raise Http404
+
+	context = {
+	}
+	return render(request, 'superuser_index.html', context)
