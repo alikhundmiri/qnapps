@@ -16,6 +16,11 @@
 				<li class="nav-item">
 					<a class="nav-link" data-toggle="modal" data-target="#logout_modal" href=""><i class="fas fa-sign-out-alt"></i> Logout as {{request.user.username}}</a>
 				</li>
+				{% if request.user.is_superuser %}
+				<li class="nav-item" style="margin-right: 10px">
+					<a class="btn btn-outline-success navbar-btn" href="{% url 'superuser_index' request.user.username %}">Super User</a>
+				</li>
+				{% endif %}
 				<li class="nav-item">
 					<a class="btn btn-danger navbar-btn" href="{% url 'core:new_question' request.user.username %}">New Question</a>
 				</li>

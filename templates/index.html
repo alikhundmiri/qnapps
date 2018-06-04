@@ -117,8 +117,8 @@ custom-item {
 
 
 	{% endif %}
-
 	{% endblock %}
+	
 	{% block right_content %}
 	<div class="position-fixed">
 		<div class="card my-4">
@@ -133,6 +133,25 @@ custom-item {
 				</form>
 			</div>
 		</div>
+		{% if request.user.is_authenticated %}
+		<div class="card my-4">
+			<!-- <h5 class="card-header text-muted">Search <small>for questions and apps</small></h5> -->
+			<div class="card-body">
+				<p class="text-muted" style="margin-bottom: 0px;">
+					<a href="{% url 'core:new_question' request.user.username %}" style="color: gray">Submit your app to get new traffic!</a>
+				</p>
+			</div>
+		</div>
+		{% else %}
+		<div class="card my-4">
+			<!-- <h5 class="card-header text-muted">Search <small>for questions and apps</small></h5> -->
+			<div class="card-body">
+				<p class="text-muted" style="margin-bottom: 0px;">
+					<a href="{% url 'register' %}" style="color: gray">Register Now to submit your app.</a>
+				</p>
+			</div>
+		</div>
+		{% endif %}		
 		<div class="card my-4">
 			<!-- <h5 class="card-header text-muted">Search <small>for questions and apps</small></h5> -->
 			<div class="card-body">
@@ -142,7 +161,6 @@ custom-item {
 			</div>
 		</div>
 	</div>
-
 	<!-- Modal -->
 	<div class="modal fade" id="AdvertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
