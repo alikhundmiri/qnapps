@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY', '-a)fm)_xm@%_x7#3041(3@(io!a9fuvy2t)ydd(1+gyjmm^&r)')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
 'https://qandapps.herokuapp.com/',
