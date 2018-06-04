@@ -8,36 +8,37 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="Question And Apps is a discovery site to find about potential problems to solve. Here you can find questions and their answers given in form of apps or product.">
 	<meta name="author" content="@newlifeshoes">
-	<meta name="twitter:card" content="summary">
+	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:site" content="@newlifeshoes">
 	<meta name="twitter:creator" content="@newlifeshoes">
 	<meta property="og:url" content="{{ request.build_absolute_uri }}">
 	{% comment %}
 	<!-- summary_large_image -->
-<!-- 	<meta name="twitter:image" content="https://s3.amazonaws.com/side-projects/afiio/media/profiles/ali/card/ali_user_card_1.png">
-	<meta property="og:image" content="https://s3.amazonaws.com/side-projects/afiio/media/profiles/ali/card/ali_user_card_1.png">
--->
-{% endcomment %}
-<meta name="twitter:title" content="Question And Apps - Each question has an app for answer">
-<meta property="og:title" content="Question And Apps - Each question has an app for answer">
-<meta name="twitter:description" content="Question And Apps is a discovery site to find about potential problems to solve. Here you can find questions and their answers given in form of apps or product.">
-<meta property="og:description" content="Question And Apps is a discovery site to find about potential problems to solve. Here you can find questions and their answers given in form of apps or product.">
+	{% endcomment %}
+	<meta name="twitter:image" content="https://s3.amazonaws.com/side-projects/qnapps/media/base/social_qandapps_600x600.png">
+	<meta property="og:image" content="https://s3.amazonaws.com/side-projects/qnapps/media/base/social_qandapps_600x600.png">
 
-<title>Question and Apps</title>
-<!-- Bootstrap core CSS -->
-<link href="{% static 'base/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-<!-- Custom styles for this template -->
-<link href="{% static 'base/css/scrolling-nav.css' %}" rel="stylesheet">
-<link href="{% static 'css/one-page-wonder.min.css' %}" rel="stylesheet">
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119975922-1"></script>
-<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
 
-	gtag('config', 'UA-119975922-1');
-</script>
+	<meta name="twitter:title" content="Question And Apps - Each question has an app for answer">
+	<meta property="og:title" content="Question And Apps - Each question has an app for answer">
+	<meta name="twitter:description" content="Question And Apps is a discovery site to find about potential problems to solve. Here you can find questions and their answers given in form of apps or product.">
+	<meta property="og:description" content="Question And Apps is a discovery site to find about potential problems to solve. Here you can find questions and their answers given in form of apps or product.">
+
+	<title>Question and Apps</title>
+	<!-- Bootstrap core CSS -->
+	<link href="{% static 'base/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="{% static 'base/css/scrolling-nav.css' %}" rel="stylesheet">
+	<link href="{% static 'css/one-page-wonder.min.css' %}" rel="stylesheet">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119975922-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-119975922-1');
+	</script>
 
 </head>
 
@@ -52,7 +53,7 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
-						<a class="nav-link js-scroll-trigger" href="#about">Idea</a>
+						<a class="nav-link js-scroll-trigger" href="#about">What</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link js-scroll-trigger" href="#services">Use</a>
@@ -75,7 +76,7 @@
 			<div class="container">
 				<h1 class="masthead-heading mb-0">Q and Apps</h1>
 				<h2 class="masthead-subheading mb-0"><small><small>Reach your audience through their questions</small></small></h2>
-				<!-- <a href="#" class="btn btn-primary btn-xl rounded-pill mt-5">Learn More</a> -->
+				<a class="btn btn-primary btn-xl rounded-pill mt-5" href="{% url 'core:browse_popular' %}">See in Action</a>
 			</div>
 		</div>
 		<div class="bg-circle-1 bg-circle"></div>
@@ -89,10 +90,56 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 mx-auto">
-					<h2>Idea</h2>
-					<p class="lead">Every thing ever invented was thought of because of a question. Here I am collecting questions which have lead you to create ideas.</p>
-					<p class="lead"><i>Every solution is created because a problem was identified.</i><br>Here you will list all problems and their solutions, which will help us (community) create better solutions and find problems to solve.</p>
-					<p class="lead">On this site you will find questions whos answers are in the form of apps.</p>
+
+					<h3>Conversation 1</h3>
+					<hr>
+					<blockquote class="blockquote text-right">
+						<p class="mb-0">Hi, I made this awesome side project, but I can't bring people to use it.</p>
+						<footer class="blockquote-footer">an <cite title="Indie Hacker">Indiehacker</cite></footer>
+					</blockquote>
+					<blockquote class="blockquote">
+						<p class="mb-0">What does your website do?</p>
+						<footer class="blockquote-footer">developer of <cite title="Source Title">QandApps</cite></footer>
+					</blockquote>
+					<blockquote class="blockquote text-right">
+						<p class="mb-0">Oh, It solves <i>"A huge problem on the internet"</i>.</p>
+						<footer class="blockquote-footer">an <cite title="Indie Hacker">Indiehacker</cite></footer>
+					</blockquote>
+					<blockquote class="blockquote">
+						<p class="mb-0">Well I can help. submit a question <i>"A huge problem on the internet"</i>, and then answer it with your website!<br>This way, when people search for <i>"A huge problem on the internet"</i> They will see your side project as a solution!</p>
+						<footer class="blockquote-footer">developer of <cite title="Source Title">QandApps</cite></footer>
+					</blockquote>
+					<blockquote class="blockquote text-right">
+						<p class="mb-0">Hey! that's a great way to connect developers to consumers!</p>
+						<footer class="blockquote-footer">an <cite title="Indie Hacker">Indiehacker</cite></footer>
+					</blockquote>					
+					<br><br>
+					<h3>Conversation 2</h3>
+					<hr>
+					<blockquote class="blockquote text-right">
+						<p class="mb-0">I love finding people's side projects! Some people are really awesome.</p>
+						<footer class="blockquote-footer">an <cite title="Indie Hacker">Indiehacker</cite></footer>
+					</blockquote>
+					<blockquote class="blockquote">
+						<p class="mb-0">True!</p>
+						<footer class="blockquote-footer">developer of <cite title="Source Title">QandApps</cite></footer>
+					</blockquote>
+					<blockquote class="blockquote text-right">
+						<p class="mb-0">Well, the only problem is, I can't find side projects which are made for my needs. :-(</p>
+						<footer class="blockquote-footer">an <cite title="Indie Hacker">Indiehacker</cite></footer>
+					</blockquote>
+					<blockquote class="blockquote">
+						<p class="mb-0">Well I can help. Search for things you needs on this side, and you might find the exact site you need!</p>
+						<footer class="blockquote-footer">developer of <cite title="Source Title">QandApps</cite></footer>
+					</blockquote>
+
+					<!-- <blockquote class="blockquote text-right">
+						<p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+						<footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+					</blockquote> -->
+
+					<br><br>
+					<p class="lead"><i>Every solution is created because a problem was identified.</i><br>Here you will find a list of problems and their solutions, created to help the community create better solutions and find problems to solve.</p>
 					<br>
 				</div>
 			</div>
@@ -172,7 +219,6 @@
 	</section>
 
 	{% include 'footer.html' %}
-
 	<!-- Bootstrap core JavaScript -->
 	<script src="{% static 'base/vendor/jquery/jquery.min.js' %}"></script>
 	<script src="{% static 'base/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
