@@ -39,7 +39,56 @@
 
 		gtag('config', 'UA-119975922-1');
 	</script>
+	<style type="text/css">
+	/* Chat containers */
+	.container_ {
+		border: 2px solid #dedede;
+		background-color: #f1f1f1;
+		border-radius: 5px;
+		padding: 10px;
+		margin: 10px 0;
+	}
 
+	/* Darker chat container */
+	.darker {
+		border-color: #ccc;
+		background-color: #ddd;
+	}
+
+	/* Clear floats */
+	.container_::after {
+		content: "";
+		clear: both;
+		display: table;
+	}
+
+	/* Style images */
+	.container_ img {
+		float: left;
+		max-width: 60px;
+		width: 100%;
+		margin-right: 20px;
+		border-radius: 50%;
+	}
+
+	/* Style the right image */
+	.container_ img.right {
+		float: right;
+		margin-left: 20px;
+		margin-right:0;
+	}
+
+	/* Style time text */
+	.time-right {
+		float: right;
+		color: #aaa;
+	}
+
+	/* Style time text */
+	.time-left {
+		float: left;
+		color: #999;
+	}</style>
 </head>
 
 <body id="page-top">
@@ -74,9 +123,19 @@
 	<header class="masthead text-center text-white">
 		<div class="masthead-content">
 			<div class="container">
-				<h1 class="masthead-heading mb-0">Q and Apps</h1>
-				<h2 class="masthead-subheading mb-0"><small><small>Reach your audience through their questions</small></small></h2>
-				<a class="btn btn-primary btn-xl rounded-pill mt-5" href="{% url 'core:browse_popular' %}">See in Action</a>
+				<h1 class="masthead-heading mb-0"><small><small>Asking the real questions!</small></small></h1>
+				<h2 class="masthead-subheading mb-0">
+					<small>
+						<small>
+							<small>
+								A database to submit ideas in form of question to cultivate a community which solves problems while helping connect developers with customers.
+							</small>
+						</small>
+					</small>
+				</h2>
+				<a class="btn btn-primary btn-xl rounded-pill mt-5 js-scroll-trigger" href="#about">Learn More</a>
+				<a class="btn btn-danger btn-xl rounded-pill mt-5" href="{% url 'core:browse_popular' %}">See in Action</a>
+
 			</div>
 		</div>
 		<div class="bg-circle-1 bg-circle"></div>
@@ -86,11 +145,11 @@
 	</header>
 
 
-	<section id="about">
+	<section id="about" class="bg-light">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 mx-auto">
-
+					<!--
 					<h4>Conversation 1</h4>
 					<hr>
 					<blockquote class="blockquote text-right">
@@ -112,9 +171,9 @@
 					<blockquote class="blockquote text-right">
 						<p class="mb-0">Hey! that's a great way to connect developers to consumers!</p>
 						<footer class="blockquote-footer">an <cite title="Indie Hacker">Indiehacker</cite></footer>
-					</blockquote>					
-					<br><br>
-					<h4>Conversation 2</h4>
+					</blockquote>
+					<br><br> -->
+					<h2>The Idea</h2>
 					<hr>
 					<blockquote class="blockquote text-right">
 						<p class="mb-0">I love finding people's side projects! Some people are really awesome.</p>
@@ -140,13 +199,40 @@
 		</div>
 	</section>
 
+	<section id="services">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 mx-auto">
+					<h2>How is this website useful?</h2>
+					<hr>
+					<p>
+						<b><u>For Indie hackers and product developers</u></b><br>
+						<span style="font-size: 30px">🎯</span> Targeted audience<br>
+						<span style="font-size: 30px">📈</span> New Traffic source<br>
+						<span style="font-size: 30px">👀</span> Find your competitors<br>
+						<span style="font-size: 30px">🗣</span> Simple format to reach new users<br>
+						<br>
+						<b><u>For consumers</u></b><br>
+						<span style="font-size: 30px">✌️</span> Multiple solutions to your questions<br>
+						<span style="font-size: 30px">🤑</span> Find Alternatives<br>
+						<span style="font-size: 30px">👩‍💻</span> Support Indie developers<br>
+						<span style="font-size: 30px">✍️</span> Ask questions and get answered in actual solutions<sup>*</sup><br>
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
 	<section id="small-text" class="bg-light">
 		<div class="container">
-			<div class="row text-center">
+			<div class="row">
 				<div class="col-lg-8 mx-auto">
-					<p class="lead"><i>Every solution is created because a problem was identified.</i>
-						<!-- <br>Here you will find a list of problems and their solutions, developed to help the community create better solutions and find problems to solve. -->
-					</p>
+					<blockquote class="blockquote">
+						<p class="mb-0">It is like a job board, but for Idea!</p>
+					</blockquote>
+					<blockquote class="blockquote text-right">
+						<footer class="blockquote-footer">developer of <cite title="Source Title">QandApps</cite></footer>
+					</blockquote>
 				</div>
 			</div>
 		</div>
@@ -187,31 +273,9 @@
 		</div>
 	</section>
 
-	<section id="services" class="bg-light">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 mx-auto">
-					<h2>How is this website useful?</h2>
-					<hr>
-					<p>
-						<b><u>For Indie hackers and product developers</u></b><br>
-						<span style="font-size: 30px">🎯</span> Targeted audience<br>
-						<span style="font-size: 30px">📈</span> New Traffic source<br>
-						<span style="font-size: 30px">👀</span> Find your competitors<br>
-						<span style="font-size: 30px">🗣</span> Simple format to reach new users<br>
-						<br>
-						<b><u>For consumers</u></b><br>
-						<span style="font-size: 30px">✌️</span> Multiple solutions to your questions<br>
-						<span style="font-size: 30px">🤑</span> Find Alternatives<br>
-						<span style="font-size: 30px">👩‍💻</span> Support Indie developers<br>
-						<span style="font-size: 30px">✍️</span> Ask questions and get answered in actual solutions<sup>*</sup><br>
-					</p>
-				</div>
-			</div>
-		</div>
-	</section>
 
-	<section id="funnel_in">
+
+	<section id="funnel_in" class="bg-light">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 mx-auto">
@@ -228,13 +292,12 @@
 	</section>
 
 
-	<section id="contact" class="bg-light">
+	<section id="contact">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 mx-auto">
 					<h2>The Maker</h2>
 					<hr>					
-
 					<p class="lead">Hi, I Am Ali, and I made this site. Being an Indie hacker, I work on multiple small projects through out the year, and this is one of them. I am on my way to create profitable side projects by the end of 2018, with a goal of $500 monthly recurring revenue.<br></p>
 					<p class="lead">
 					I am mostly active on twitter, so if you have any passing remarks or hickups using my products, feel free to contact me on twitter. :-)</p>
